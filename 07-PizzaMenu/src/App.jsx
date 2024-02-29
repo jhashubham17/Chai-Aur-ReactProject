@@ -63,11 +63,11 @@ function Pizza(props) {
     <li className="pizza">
       <img src={props.pizzaObj.photoName} alt={props.pizzaObj.name} />
       <div>
-      <h3>{props.pizzaObj.name}</h3>
-      <p>{props.pizzaObj.ingredients}</p>
-      <span>{props.pizzaObj.price + 10}</span>
+        <h3>{props.pizzaObj.name}</h3>
+        <p>{props.pizzaObj.ingredients}</p>
+        <span>{props.pizzaObj.price + 10}</span>
       </div>
-      </li>
+    </li>
   )
 }
 
@@ -81,19 +81,25 @@ function Header() {
 
 function Menu() {
   const pizzas = pizzaData;
+  const numPizzas = pizzas.length;
+
   return (
     <main className="menu">
       <h2>Our Menu</h2>
       <p>
-            Authentic Italian cuisine. 6 creative dishes to choose from. All
-            from our stone oven, all organic, all delicious.
-          </p>
+        Authentic Italian cuisine. 6 creative dishes to choose from. All
+        from our stone oven, all organic, all delicious.
+      </p>
+      {numPizzas > 0 ? (
+        <ul className="pizzas">
+          {pizzas.map((pizza) => (
+            <Pizza pizzaObj={pizza} key={pizza.name} />
+          ))}
+        </ul>
+      ) : (
+        <p>We're still working on our menu. Please come back later :)</p>
 
-     <ul className="pizzas">
-      {pizzas.map((pizza) => (
-        <Pizza pizzaObj={pizza} key={pizza.name}/>
-      ))}
-     </ul>
+      )}
     </main>
   )
 }
@@ -106,12 +112,16 @@ function Footer() {
   console.log(isOpen)
 
   return (
-    <footer className="footer">{isOpen && (
-      <div className="order">
-        <p>We're open until {closeHour}:00. Come visite us or order online.</p>
-        <button className="btn">Order</button>
-      </div>
-    )}</footer>
+    <footer className="footer">
+      {isOpen ? (
+        <div className="order">
+          <p>We're open until {closeHour}:00. Come visite us or order online.</p>
+          <button className="btn">Order</button>
+        </div>
+      ) : (
+        <p>We're happy to welcome you between {openHour}:00 and {closeHour}:00</p>
+      )}
+    </footer>
   )
 }
 
