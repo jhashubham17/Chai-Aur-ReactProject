@@ -8,12 +8,8 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
-App.css
-.eslintrc.cjs
-package-lock.json
-postcss.config.json
-tailwind.config.json
-vite.config.js
+.js
+.ejs
 dist
 dist-ssr
 *.local
