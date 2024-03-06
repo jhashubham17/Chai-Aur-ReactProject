@@ -8,15 +8,18 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
-tailwind.config.js
-vite.config.js
-package-lock.json
-postcss.config.js
-public
+dist
+dist-ssr
+*.local
 assets
+public
+App.css
 index.css
+.eslintrc.cjs
 
-
+package-lock.json
+tailwind.config.js
+postcss.config.js
 
 # Editor directories and files
 .vscode/*
