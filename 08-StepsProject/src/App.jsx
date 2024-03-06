@@ -1,35 +1,51 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
+
+const message = [
+  "Learn React",
+  "Apply for jobs",
+  "Invest your new income",
+];
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [steps, setStep] = useState(1)
+  const [isOpen, setIsOpen] = useState(true)
+
+  function handleNext() {
+    if (steps < 3) setStep(steps + 1)
+  }
+
+  function handlePrevius() {
+    if (steps > 1) setStep(steps - 1)
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div>
+      <button className="close" onClick={() => setIsOpen(!isOpen)}>
+        &times;
+      </button>
+
+      {isOpen && (
+        <div className="steps mx-24 my-auto px-6 py-24 rounded-md ">
+          <div className="numbers flex justify-between">
+            <div className={steps >= 1 ? "active" : ""}>1</div>
+            <div className={steps >= 2 ? "active" : ""}>2</div>
+            <div className={steps >= 3 ? "active" : ""} >3</div>
+          </div>
+
+          <p className="message text-center mx-10 my-11 font-bold">{steps}: {message[steps - 1]}</p>
+
+          <div className="btn text-white flex justify-between">
+            <button className="bg-blue-500" onClick={handlePrevius}>Previou</button>
+            <button className="bg-blue-500" onClick={handleNext}>Next</button>
+
+          </div>
+        </div>
+      )}
+    </div>
+
   )
 }
+
 
 export default App
