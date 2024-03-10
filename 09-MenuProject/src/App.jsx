@@ -47,7 +47,7 @@ const pizzaData = [
 
 function App() {
   return (
-    <div>
+    <div className='container'>
       <Header />
       <Menu />
       <Footer />
@@ -57,21 +57,45 @@ function App() {
 
 function Header() {
   return (
-    <div>
-
-    </div>
+    <header className='header'>
+      <h1>Fast React Pizza Co.</h1>
+    </header>
   )
 }
 
 function Menu() {
   return (
-    <div>
-      <ul className="pizzas">
-        {pizzaData.map((pizza) => (
-          <Pizza pizzaObj={pizza} key={pizza.name} />
-        ))}
-      </ul>
-    </div>
+    <main className='menu'>
+      <h2>Our Menu</h2>
+      <>
+        <p>
+          Authentic Italian cuisine. 6 creative dishes to choose from. All
+          from our stone oven, all organic, all delicious.
+        </p>
+
+        <ul className="pizzas">
+          {pizzaData.map((pizza) => (
+            <Pizza pizzaObj={pizza} key={pizza.name} />
+          ))}
+
+        </ul>
+      </>
+
+    </main>
+  )
+}
+
+function Pizza(props) {
+  return (
+    <li className='pizza'>
+
+      <img src={props.pizzaObj.photoName} alt={props.pizzaObj.name} />
+      <div>
+        <h3>{props.pizzaObj.name}</h3>
+        <p>{props.pizzaObj.ingredients}</p>
+        <span>{props.pizzaObj.price}</span>
+      </div>
+    </li>
   )
 }
 
@@ -80,17 +104,6 @@ function Footer() {
     <div>
 
     </div>
-  )
-}
-
-function Pizza(props) {
-  return (
-    <li>
-      <img src={props.pizzaObj.photoName} alt={props.pizzaObj.name} />
-      <h1>{props.pizzaObj.name}</h1>
-      <p>{props.pizzaObj.ingredients}</p>
-      <span>{props.pizzaObj.price}</span>
-    </li>
   )
 }
 
