@@ -1,7 +1,5 @@
-import React from 'react'
- 
-function Logo(){
-  return(
+function Logo() {
+  return (
     <>
       <h1>🌴 Far Away 👜</h1>
     </>
