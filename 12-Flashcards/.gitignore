@@ -1,0 +1,8 @@
+node_modules
+.eslintrc.cjs
+index.html
+package-lock.json
+postcss.config.js
+tailwind.config.js
+vite.config.js
+public
